@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fidha Nazreen | Computational Biophysicist</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:    #1a2e5a;
+      --purple:  #5b4fcf;
+      --teal:    #0d8a7a;
+      --light-bg:#f5f6fa;
+      --card-bg: #ffffff;
+      --text:    #2d3436;
+      --muted:   #636e72;
+      --border:  #dfe6e9;
+      --tag-bg:  #eef0fc;
+      --tag-col: #5b4fcf;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      color: var(--text);
+      background: #fff;
+      line-height: 1.6;
+    }
+
+    /* ── NAV ─────────────────────────────────────── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(255,255,255,0.96);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 5%;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 62px;
+    }
+    .nav-logo {
+      font-family: 'Lora', serif;
+      font-weight: 700; font-size: 1.2rem;
+      color: var(--navy); text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
+    .nav-links a {
+      font-size: 0.88rem; font-weight: 500;
+      color: var(--muted); text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--navy); }
+    .nav-cv {
+      background: var(--navy); color: #fff !important;
+      padding: 0.4rem 1rem; border-radius: 6px;
+      transition: background 0.2s !important;
+    }
+    .nav-cv:hover { background: var(--purple) !important; }
+
+    /* ── HERO ────────────────────────────────────── */
+    #hero {
+      min-height: 100vh;
+      display: flex; align-items: center;
+      padding: 80px 5% 60px;
+      background: linear-gradient(135deg, #f5f6fa 0%, #eef0fc 100%);
+      gap: 4rem;
+    }
+    .hero-text { flex: 1; }
+    .hero-tag {
+      display: inline-block;
+      background: var(--tag-bg); color: var(--tag-col);
+      font-size: 0.8rem; font-weight: 600;
+      padding: 0.3rem 0.9rem; border-radius: 20px;
+      letter-spacing: 0.04em; text-transform: uppercase;
+      margin-bottom: 1.2rem;
+    }
+    .hero-text h1 {
+      font-family: 'Lora', serif;
+      font-size: clamp(2.2rem, 5vw, 3.4rem);
+      font-weight: 700; line-height: 1.15;
+      color: var(--navy);
+      margin-bottom: 0.5rem;
+    }
+    .hero-text h1 span { color: var(--purple); }
+    .hero-subtitle {
+      font-size: 1.15rem; color: var(--muted);
+      margin: 0.8rem 0 0.3rem;
+    }
+    .hero-affil {
+      font-size: 0.93rem; color: var(--muted);
+      margin-bottom: 1.6rem;
+    }
+    .hero-affil strong { color: var(--text); }
+    .hero-desc {
+      font-size: 1.02rem; color: var(--text);
+      max-width: 540px; margin-bottom: 2rem;
+      line-height: 1.75;
+    }
+    .hero-btns { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 0.45rem;
+      padding: 0.6rem 1.3rem; border-radius: 8px;
+      font-size: 0.9rem; font-weight: 500;
+      text-decoration: none; transition: all 0.2s;
+    }
+    .btn-primary { background: var(--navy); color: #fff; }
+    .btn-primary:hover { background: var(--purple); }
+    .btn-outline {
+      border: 1.5px solid var(--border); color: var(--text); background: #fff;
+    }
+    .btn-outline:hover { border-color: var(--purple); color: var(--purple); }
+
+    /* Avatar */
+    .hero-avatar {
+      flex-shrink: 0;
+      width: 260px; height: 260px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--navy), var(--purple));
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Lora', serif;
+      font-size: 5rem; font-weight: 700; color: rgba(255,255,255,0.9);
+      box-shadow: 0 20px 60px rgba(26,46,90,0.2);
+      user-select: none;
+    }
+
+    /* ── SECTIONS ────────────────────────────────── */
+    section { padding: 80px 5%; }
+    section:nth-child(even) { background: var(--light-bg); }
+
+    .section-label {
+      font-size: 0.78rem; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--purple); margin-bottom: 0.5rem;
+    }
+    .section-title {
+      font-family: 'Lora', serif;
+      font-size: clamp(1.5rem, 3vw, 2.1rem);
+      font-weight: 700; color: var(--navy);
+      margin-bottom: 1rem;
+    }
+    .section-lead {
+      font-size: 1.02rem; color: var(--muted);
+      max-width: 680px; margin-bottom: 3rem;
+    }
+
+    /* ── ABOUT ───────────────────────────────────── */
+    .about-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 3rem; align-items: start;
+    }
+    .about-bio { font-size: 1.03rem; line-height: 1.8; color: var(--text); }
+    .about-bio p + p { margin-top: 1rem; }
+
+    .focus-cards { display: flex; flex-direction: column; gap: 1rem; }
+    .focus-card {
+      background: var(--card-bg); border: 1px solid var(--border);
+      border-left: 4px solid var(--purple);
+      border-radius: 10px; padding: 1.1rem 1.3rem;
+    }
+    .focus-card h4 { font-size: 0.95rem; font-weight: 600; color: var(--navy); margin-bottom: 0.3rem; }
+    .focus-card p { font-size: 0.88rem; color: var(--muted); }
+
+    /* ── RESEARCH ────────────────────────────────── */
+    .research-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+    .res-card {
+      background: var(--card-bg); border: 1px solid var(--border);
+      border-radius: 12px; padding: 1.6rem;
+      transition: box-shadow 0.25s, transform 0.25s;
+    }
+    .res-card:hover { box-shadow: 0 8px 30px rgba(26,46,90,0.12); transform: translateY(-3px); }
+    .res-icon {
+      width: 44px; height: 44px; border-radius: 10px;
+      background: var(--tag-bg); color: var(--purple);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem; margin-bottom: 1rem;
+    }
+    .res-card h3 { font-size: 1rem; font-weight: 600; color: var(--navy); margin-bottom: 0.6rem; }
+    .res-card p { font-size: 0.89rem; color: var(--muted); line-height: 1.65; }
+    .res-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 1rem; }
+    .res-tag {
+      font-size: 0.75rem; font-weight: 500;
+      background: var(--tag-bg); color: var(--tag-col);
+      padding: 0.2rem 0.6rem; border-radius: 20px;
+    }
+
+    /* ── PUBLICATIONS ────────────────────────────── */
+    .pub-list { display: flex; flex-direction: column; gap: 1.2rem; }
+    .pub-item {
+      background: var(--card-bg); border: 1px solid var(--border);
+      border-radius: 10px; padding: 1.4rem 1.6rem;
+      display: flex; gap: 1.2rem;
+      transition: box-shadow 0.2s;
+    }
+    .pub-item:hover { box-shadow: 0 4px 20px rgba(26,46,90,0.09); }
+    .pub-num {
+      flex-shrink: 0;
+      width: 28px; height: 28px; border-radius: 50%;
+      background: var(--navy); color: #fff;
+      font-size: 0.78rem; font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+      margin-top: 0.15rem;
+    }
+    .pub-body { flex: 1; }
+    .pub-title { font-weight: 600; font-size: 0.97rem; color: var(--navy); margin-bottom: 0.3rem; }
+    .pub-authors { font-size: 0.86rem; color: var(--muted); margin-bottom: 0.3rem; }
+    .pub-authors em { font-style: normal; color: var(--purple); font-weight: 500; }
+    .pub-meta { display: flex; align-items: center; gap: 0.7rem; flex-wrap: wrap; }
+    .pub-journal {
+      font-size: 0.82rem; font-weight: 600;
+      color: var(--teal);
+    }
+    .pub-year {
+      font-size: 0.8rem; color: var(--muted);
+      background: var(--light-bg); padding: 0.1rem 0.55rem;
+      border-radius: 20px;
+    }
+    .pub-link {
+      font-size: 0.8rem; color: var(--purple);
+      text-decoration: none; display: inline-flex; align-items: center; gap: 0.3rem;
+    }
+    .pub-link:hover { text-decoration: underline; }
+    .pub-first { border-left: 3px solid var(--purple); }
+
+    .scholar-cta {
+      text-align: center; margin-top: 2rem;
+    }
+
+    /* ── SKILLS ──────────────────────────────────── */
+    .skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.5rem; }
+    .skill-group { background: var(--card-bg); border: 1px solid var(--border); border-radius: 10px; padding: 1.3rem; }
+    .skill-group h3 {
+      font-size: 0.82rem; font-weight: 700;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--muted); margin-bottom: 0.9rem;
+    }
+    .skill-tags { display: flex; flex-wrap: wrap; gap: 0.45rem; }
+    .skill-tag {
+      font-size: 0.82rem; font-weight: 500;
+      padding: 0.28rem 0.75rem; border-radius: 20px;
+      background: var(--tag-bg); color: var(--tag-col);
+    }
+    .skill-tag.green { background: #e8f5f2; color: #0d7a6e; }
+    .skill-tag.red   { background: #fef0f0; color: #c0392b; }
+    .skill-tag.gray  { background: #f0f0f0; color: #555; }
+
+    /* ── AWARDS & SERVICE ────────────────────────── */
+    .timeline { position: relative; padding-left: 1.8rem; }
+    .timeline::before {
+      content: '';
+      position: absolute; left: 6px; top: 8px; bottom: 8px;
+      width: 2px; background: var(--border);
+    }
+    .tl-item { position: relative; margin-bottom: 1.6rem; }
+    .tl-item::before {
+      content: '';
+      position: absolute; left: -1.8rem; top: 6px;
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      background: var(--purple);
+      border: 2px solid #fff;
+      box-shadow: 0 0 0 2px var(--purple);
+    }
+    .tl-year { font-size: 0.78rem; font-weight: 600; color: var(--purple); margin-bottom: 0.2rem; }
+    .tl-title { font-size: 0.95rem; font-weight: 600; color: var(--navy); }
+    .tl-desc { font-size: 0.87rem; color: var(--muted); margin-top: 0.15rem; }
+
+    .awards-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: start; }
+
+    /* ── CONTACT ─────────────────────────────────── */
+    #contact { background: var(--navy); color: #fff; text-align: center; }
+    #contact .section-label { color: rgba(255,255,255,0.55); }
+    #contact .section-title { color: #fff; }
+    .contact-lead { color: rgba(255,255,255,0.7); font-size: 1.05rem; max-width: 520px; margin: 0 auto 2.5rem; }
+    .contact-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; }
+    .contact-link {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.65rem 1.4rem; border-radius: 8px;
+      font-size: 0.9rem; font-weight: 500; text-decoration: none;
+      border: 1.5px solid rgba(255,255,255,0.25); color: #fff;
+      transition: all 0.2s;
+    }
+    .contact-link:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.5); }
+    .contact-link.email-btn { background: var(--purple); border-color: var(--purple); }
+    .contact-link.email-btn:hover { background: #4a3fb5; border-color: #4a3fb5; }
+
+    /* ── FOOTER ──────────────────────────────────── */
+    footer {
+      background: #111827; color: rgba(255,255,255,0.4);
+      text-align: center; padding: 1.4rem 5%;
+      font-size: 0.82rem;
+    }
+    footer a { color: rgba(255,255,255,0.5); text-decoration: none; }
+    footer a:hover { color: rgba(255,255,255,0.8); }
+
+    /* ── RESPONSIVE ──────────────────────────────── */
+    @media (max-width: 768px) {
+      #hero { flex-direction: column-reverse; padding-top: 60px; text-align: center; gap: 2.5rem; }
+      .hero-avatar { width: 180px; height: 180px; font-size: 3.5rem; }
+      .hero-btns { justify-content: center; }
+      .hero-desc { margin-left: auto; margin-right: auto; }
+      .about-grid { grid-template-columns: 1fr; }
+      .awards-grid { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#hero" class="nav-logo">Fidha Nazreen</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#research">Research</a></li>
+    <li><a href="#publications">Publications</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#awards">Awards</a></li>
+    <li><a href="#contact" class="nav-cv">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-text">
+    <div class="hero-tag">Computational Biophysics · PhD Candidate</div>
+    <h1>Fidha<br><span>Nazreen</span></h1>
+    <p class="hero-subtitle">Simulating life at the atomic scale.</p>
+    <p class="hero-affil">
+      <strong>University of Illinois Chicago</strong> &mdash;
+      Advisor: Prof. Huan-Xiang Zhou &bull; Expected graduation: June 2026
+    </p>
+    <p class="hero-desc">
+      I use molecular dynamics simulations, enhanced sampling methods, and deep learning
+      to understand how intrinsically disordered proteins interact with cellular membranes —
+      with applications in neurodegeneration, signal transduction, and drug discovery.
+    </p>
+    <div class="hero-btns">
+      <a href="https://scholar.google.com/citations?user=E9u1PgIAAAAJ&hl=en" target="_blank" class="btn btn-primary">
+        <i class="fas fa-graduation-cap"></i> Google Scholar
+      </a>
+      <a href="https://github.com/FidhaNazreen" target="_blank" class="btn btn-outline">
+        <i class="fab fa-github"></i> GitHub
+      </a>
+      <a href="https://fidhanazreen.github.io/AroMIP/" target="_blank" class="btn btn-outline">
+        <i class="fas fa-flask"></i> AroMIP Tool
+      </a>
+      <a href="mailto:fnazreenkunnath@gmail.com" class="btn btn-outline">
+        <i class="fas fa-envelope"></i> Email
+      </a>
+    </div>
+  </div>
+  <div class="hero-avatar">FN</div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <p class="section-label">Background</p>
+  <h2 class="section-title">About Me</h2>
+  <div class="about-grid">
+    <div class="about-bio">
+      <p>
+        I am a fifth-year PhD candidate in Computational Biophysics at the University of Illinois
+        Chicago, working in the lab of Prof. Huan-Xiang Zhou. My research sits at the intersection
+        of atomistic simulation, machine learning, and bioinformatics, with a focus on
+        intrinsically disordered proteins (IDPs) and their interactions with lipid membranes.
+      </p>
+      <p>
+        Prior to UIC, I completed a BS-MS dual degree in Physics from IISER Mohali, India,
+        where I worked on liquid crystal biosensors and lipid-protein MD simulations (published
+        in <em>Nano Letters</em>).
+      </p>
+      <p>
+        I have six peer-reviewed publications (four as first author), including papers in
+        <em>Cell Reports Physical Science</em>, <em>Communications Biology</em>, and
+        <em>Annual Review of Biophysics</em>. I also developed and deployed <strong>AroMIP</strong>,
+        a public web server for predicting peptide-membrane insertion energetics with &gt;90%
+        accuracy on human-proteome disordered regions.
+      </p>
+    </div>
+    <div class="focus-cards">
+      <div class="focus-card">
+        <h4><i class="fas fa-atom" style="color:var(--purple);margin-right:.45rem"></i>IDP–Membrane Interactions</h4>
+        <p>Microsecond-scale all-atom MD simulations of disordered proteins at lipid bilayers, uncovering aromatic insertion codes and aggregation pathways.</p>
+      </div>
+      <div class="focus-card">
+        <h4><i class="fas fa-brain" style="color:var(--purple);margin-right:.45rem"></i>Deep Learning for Biomolecules</h4>
+        <p>GNN-VAMPnet pipelines (PyTorch Geometric) for classifying membrane-binding states from MD trajectory data; automated conformational analysis.</p>
+      </div>
+      <div class="focus-card">
+        <h4><i class="fas fa-laptop-code" style="color:var(--purple);margin-right:.45rem"></i>Alzheimer's &amp; Neurodegeneration</h4>
+        <p>Characterizing Aβ40/42 oligomerization and aggregation pathways using enhanced sampling methods, with cross-validation against NMR and cryo-EM data.</p>
+      </div>
+      <div class="focus-card">
+        <h4><i class="fas fa-globe" style="color:var(--purple);margin-right:.45rem"></i>Deployed Bioinformatics Tools</h4>
+        <p>Sequence-based predictors deployed as public web servers — bridging high-throughput simulation with accessible tools for experimentalists worldwide.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESEARCH -->
+<section id="research">
+  <p class="section-label">Projects</p>
+  <h2 class="section-title">Research Highlights</h2>
+  <p class="section-lead">
+    My work combines atomistic simulation, large-scale sequence analysis, and machine learning
+    to extract actionable biological insight from disordered protein systems.
+  </p>
+  <div class="research-grid">
+    <div class="res-card">
+      <div class="res-icon"><i class="fas fa-water"></i></div>
+      <h3>AroMIP: A Membrane Insertion Predictor</h3>
+      <p>
+        Scanned 1.2 million 9-residue sequences via the PPM method to derive a sequence code for
+        aromatic-centered membrane insertion. AroMIP achieves 91–99% accuracy on human proteome
+        IDRs and is live as a public web server.
+      </p>
+      <div class="res-tags">
+        <span class="res-tag">PPM</span>
+        <span class="res-tag">IDP</span>
+        <span class="res-tag">Lipid Membranes</span>
+        <span class="res-tag">Web Server</span>
+      </div>
+    </div>
+    <div class="res-card">
+      <div class="res-icon"><i class="fas fa-dna"></i></div>
+      <h3>Aβ Oligomerization Pathways</h3>
+      <p>
+        Microsecond AMBER/NAMD simulations with umbrella sampling and free energy calculations
+        to map aggregation intermediates of Aβ40 and Aβ42. Identified key oligomeric states
+        implicated in Alzheimer's neurotoxicity.
+      </p>
+      <div class="res-tags">
+        <span class="res-tag">AMBER</span>
+        <span class="res-tag">Enhanced Sampling</span>
+        <span class="res-tag">Alzheimer's</span>
+        <span class="res-tag">Free Energy</span>
+      </div>
+    </div>
+    <div class="res-card">
+      <div class="res-icon"><i class="fas fa-project-diagram"></i></div>
+      <h3>GNN-VAMPnet for Membrane States</h3>
+      <p>
+        Engineered a hybrid Graph Neural Network + VAMPnet deep learning pipeline using
+        PyTorch Geometric to classify disordered-protein membrane-binding conformational states
+        directly from MD trajectory data.
+      </p>
+      <div class="res-tags">
+        <span class="res-tag">PyTorch Geometric</span>
+        <span class="res-tag">GNN</span>
+        <span class="res-tag">VAMPnet</span>
+        <span class="res-tag">Deep Learning</span>
+      </div>
+    </div>
+    <div class="res-card">
+      <div class="res-icon"><i class="fas fa-cogs"></i></div>
+      <h3>Force Field Parameterization</h3>
+      <p>
+        Developed AMBER-compatible force fields for chemically challenging small molecules
+        (free radicals, polyethylene glycol) using Gaussian-based RESP charge fitting,
+        benchmarked against existing AMBER standards.
+      </p>
+      <div class="res-tags">
+        <span class="res-tag">AMBER FF</span>
+        <span class="res-tag">Gaussian</span>
+        <span class="res-tag">RESP</span>
+        <span class="res-tag">Small Molecules</span>
+      </div>
+    </div>
+    <div class="res-card">
+      <div class="res-icon"><i class="fas fa-microscope"></i></div>
+      <h3>Multi-Institutional Collaboration</h3>
+      <p>
+        Led the computational arm of a collaboration with Mayo Clinic, integrating MD predictions
+        with experimental NMR and cryo-EM to validate structural ensembles of amyloid-beta
+        oligomers across multiple partner institutions.
+      </p>
+      <div class="res-tags">
+        <span class="res-tag">NMR Validation</span>
+        <span class="res-tag">Cryo-EM</span>
+        <span class="res-tag">Mayo Clinic</span>
+        <span class="res-tag">Amyloid</span>
+      </div>
+    </div>
+    <div class="res-card">
+      <div class="res-icon"><i class="fas fa-vial"></i></div>
+      <h3>Liquid Crystal Biosensors</h3>
+      <p>
+        Performed all-atom MD simulations of 5CB liquid crystal self-assembly and lipid-protein
+        interactions at IISER Mohali, supporting a <em>Nano Letters</em> publication that established
+        LC droplets as nanoscale biosensors.
+      </p>
+      <div class="res-tags">
+        <span class="res-tag">Liquid Crystals</span>
+        <span class="res-tag">Lipid-Protein</span>
+        <span class="res-tag">Nano Letters</span>
+        <span class="res-tag">Biosensors</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PUBLICATIONS -->
+<section id="publications">
+  <p class="section-label">Peer-Reviewed Work</p>
+  <h2 class="section-title">Publications</h2>
+  <p class="section-lead">Six peer-reviewed publications (four as first author) · 87+ citations · h-index 5</p>
+
+  <div class="pub-list">
+
+    <div class="pub-item pub-first">
+      <div class="pub-num">1</div>
+      <div class="pub-body">
+        <div class="pub-title">A membrane insertion code for intrinsically disordered proteins</div>
+        <div class="pub-authors"><em>F. N. K. Muhammedkutty</em> and H.-X. Zhou</div>
+        <div class="pub-meta">
+          <span class="pub-journal">bioRxiv (2026)</span>
+          <span class="pub-year">Preprint</span>
+          <a href="https://doi.org/10.64898/2026.03.12.711444" target="_blank" class="pub-link">
+            <i class="fas fa-external-link-alt"></i> DOI
+          </a>
+          <a href="https://fidhanazreen.github.io/AroMIP/" target="_blank" class="pub-link">
+            <i class="fas fa-globe"></i> Web Server
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="pub-item pub-first">
+      <div class="pub-num">2</div>
+      <div class="pub-body">
+        <div class="pub-title">Membrane-assisted Aβ40 aggregation pathways</div>
+        <div class="pub-authors"><em>F. N. K. Muhammedkutty</em> and H.-X. Zhou</div>
+        <div class="pub-meta">
+          <span class="pub-journal">Cell Reports Physical Science</span>
+          <span class="pub-year">6, 102436 (2025)</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="pub-item pub-first">
+      <div class="pub-num">3</div>
+      <div class="pub-body">
+        <div class="pub-title">Atomistic molecular dynamics simulations of intrinsically disordered proteins</div>
+        <div class="pub-authors"><em>F. N. K. Muhammedkutty</em>, M. MacAinsh, and H.-X. Zhou</div>
+        <div class="pub-meta">
+          <span class="pub-journal">Current Opinion in Structural Biology</span>
+          <span class="pub-year">92, 103029 (2025)</span>
+          <span style="font-size:0.78rem;color:var(--teal);font-weight:600;">26 citations</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="pub-item">
+      <div class="pub-num">4</div>
+      <div class="pub-body">
+        <div class="pub-title">Membrane association of intrinsically disordered proteins</div>
+        <div class="pub-authors">M. MacAinsh, <em>F. N. K. Muhammedkutty</em>, R. Prasad, and H.-X. Zhou</div>
+        <div class="pub-meta">
+          <span class="pub-journal">Annual Review of Biophysics</span>
+          <span class="pub-year">54, 275–302 (2025)</span>
+          <span style="font-size:0.78rem;color:var(--teal);font-weight:600;">11 citations</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="pub-item pub-first">
+      <div class="pub-num">5</div>
+      <div class="pub-body">
+        <div class="pub-title">A common pathway for detergent-assisted oligomerization of Aβ42</div>
+        <div class="pub-authors"><em>F. N. K. Muhammedkutty</em>, R. Prasad, Y. Gao, T. Rao Sudarshan, A. S. Robang, J. O. Watzlawik, T. L. Rosenberry, A. K. Paravastu, and H.-X. Zhou</div>
+        <div class="pub-meta">
+          <span class="pub-journal">Communications Biology</span>
+          <span class="pub-year">6, 1184 (2023)</span>
+          <span style="font-size:0.78rem;color:var(--teal);font-weight:600;">11 citations</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="pub-item">
+      <div class="pub-num">6</div>
+      <div class="pub-body">
+        <div class="pub-title">Probing nanoscale lipid–protein interactions at the interface of liquid crystal droplets</div>
+        <div class="pub-authors">I. Pani, <em>F. N. K. Muhammedkutty</em>, M. Sharma, and S. K. Pal</div>
+        <div class="pub-meta">
+          <span class="pub-journal">Nano Letters</span>
+          <span class="pub-year">21, 4546–4553 (2021)</span>
+          <span style="font-size:0.78rem;color:var(--teal);font-weight:600;">30 citations</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="scholar-cta">
+    <a href="https://scholar.google.com/citations?user=E9u1PgIAAAAJ&hl=en" target="_blank" class="btn btn-outline">
+      <i class="fas fa-graduation-cap"></i> View full profile on Google Scholar
+    </a>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <p class="section-label">Technical Expertise</p>
+  <h2 class="section-title">Skills</h2>
+  <p class="section-lead">Five years of hands-on experience across simulation, machine learning, and scientific software development.</p>
+  <div class="skills-grid">
+    <div class="skill-group">
+      <h3>MD Simulation</h3>
+      <div class="skill-tags">
+        <span class="skill-tag">AMBER</span>
+        <span class="skill-tag">NAMD</span>
+        <span class="skill-tag">GROMACS</span>
+        <span class="skill-tag">Atomistic MD</span>
+        <span class="skill-tag">Enhanced Sampling</span>
+        <span class="skill-tag">REST2</span>
+        <span class="skill-tag">Metadynamics</span>
+        <span class="skill-tag">Umbrella Sampling</span>
+        <span class="skill-tag">Free Energy Calc.</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <h3>Machine Learning &amp; AI</h3>
+      <div class="skill-tags">
+        <span class="skill-tag">PyTorch</span>
+        <span class="skill-tag">PyTorch Geometric</span>
+        <span class="skill-tag">TensorFlow</span>
+        <span class="skill-tag">scikit-learn</span>
+        <span class="skill-tag">GNN</span>
+        <span class="skill-tag">VAMPnet</span>
+        <span class="skill-tag">PCA / tICA</span>
+        <span class="skill-tag">Clustering</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <h3>Programming</h3>
+      <div class="skill-tags">
+        <span class="skill-tag green">Python</span>
+        <span class="skill-tag green">NumPy / Pandas</span>
+        <span class="skill-tag green">MDTraj</span>
+        <span class="skill-tag green">SciPy</span>
+        <span class="skill-tag gray">Bash</span>
+        <span class="skill-tag gray">C</span>
+        <span class="skill-tag gray">Tcl</span>
+        <span class="skill-tag gray">MATLAB</span>
+        <span class="skill-tag gray">CUDA</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <h3>Visualization</h3>
+      <div class="skill-tags">
+        <span class="skill-tag red">VMD</span>
+        <span class="skill-tag red">PyMOL</span>
+        <span class="skill-tag red">ChimeraX</span>
+        <span class="skill-tag red">Matplotlib</span>
+        <span class="skill-tag red">Seaborn</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <h3>Infrastructure</h3>
+      <div class="skill-tags">
+        <span class="skill-tag gray">Linux / HPC</span>
+        <span class="skill-tag gray">Slurm / PBS</span>
+        <span class="skill-tag gray">GPU Computing</span>
+        <span class="skill-tag gray">Git</span>
+        <span class="skill-tag gray">Jupyter</span>
+        <span class="skill-tag gray">Gaussian</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <h3>Research Methods</h3>
+      <div class="skill-tags">
+        <span class="skill-tag">Conformational Analysis</span>
+        <span class="skill-tag">Force Field Dev.</span>
+        <span class="skill-tag">Proteome Analysis</span>
+        <span class="skill-tag">NMR Validation</span>
+        <span class="skill-tag">Cryo-EM Cross-val.</span>
+        <span class="skill-tag">Web Server Deployment</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AWARDS & SERVICE -->
+<section id="awards">
+  <p class="section-label">Achievements &amp; Contributions</p>
+  <h2 class="section-title">Awards &amp; Service</h2>
+  <div class="awards-grid">
+
+    <div>
+      <h3 style="font-size:1rem;font-weight:700;color:var(--navy);margin-bottom:1.2rem;">Honors &amp; Awards</h3>
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-year">2024</div>
+          <div class="tl-title">Best Poster Award</div>
+          <div class="tl-desc">Computational Research Symposium, University of Illinois Chicago</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-year">2024 &amp; 2025</div>
+          <div class="tl-title">Graduate Student Council Travel Award</div>
+          <div class="tl-desc">University of Illinois Chicago</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-year">2015–2020</div>
+          <div class="tl-title">INSPIRE Fellowship</div>
+          <div class="tl-desc">Innovation in Science Pursuit for Inspired Research — Department of Science &amp; Technology, Government of India</div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <h3 style="font-size:1rem;font-weight:700;color:var(--navy);margin-bottom:1.2rem;">Leadership &amp; Service</h3>
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-year">2025–present</div>
+          <div class="tl-title">Treasurer, Women in HPC — Chicago Chapter</div>
+          <div class="tl-desc">Leading financial operations for the regional chapter of Women in High-Performance Computing</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-year">2024–2025</div>
+          <div class="tl-title">Organizer, Biophysics Seminar Series</div>
+          <div class="tl-desc">Coordinated speaker invitations and logistics for UIC departmental seminar series</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-year">2025</div>
+          <div class="tl-title">Oral Presentation — Biophysical Society Annual Meeting</div>
+          <div class="tl-desc">Los Angeles, CA &middot; Feb 2025</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-year">2024</div>
+          <div class="tl-title">Poster — Biophysical Society Annual Meeting</div>
+          <div class="tl-desc">Philadelphia, PA &middot; Feb 2024</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-year">2023</div>
+          <div class="tl-title">Co-Organizer — 2nd Annual Biophysics Symposium at UIC</div>
+          <div class="tl-desc">Sponsored by the Biophysical Society &middot; April 2023</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <p class="section-label">Get in Touch</p>
+  <h2 class="section-title">Contact</h2>
+  <p class="contact-lead">
+    I am actively seeking industry and academic positions starting Summer 2026.
+    Feel free to reach out to discuss research, collaborations, or opportunities.
+  </p>
+  <div class="contact-links">
+    <a href="mailto:fnazreenkunnath@gmail.com" class="contact-link email-btn">
+      <i class="fas fa-envelope"></i> fnazreenkunnath@gmail.com
+    </a>
+    <a href="https://scholar.google.com/citations?user=E9u1PgIAAAAJ&hl=en" target="_blank" class="contact-link">
+      <i class="fas fa-graduation-cap"></i> Google Scholar
+    </a>
+    <a href="https://github.com/FidhaNazreen" target="_blank" class="contact-link">
+      <i class="fab fa-github"></i> GitHub
+    </a>
+    <a href="https://fidhanazreen.github.io/AroMIP/" target="_blank" class="contact-link">
+      <i class="fas fa-flask"></i> AroMIP
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>
+    &copy; 2026 Fidha Nazreen Kunnath Muhammedkutty &nbsp;&middot;&nbsp;
+    University of Illinois Chicago &nbsp;&middot;&nbsp;
+    <a href="https://zhougroup-uic.github.io/" target="_blank">Zhou Group</a>
+  </p>
+</footer>
+
+</body>
+</html>
